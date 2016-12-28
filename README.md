@@ -5,6 +5,7 @@ A virtual environment for web development built with Docker.
 - Install Nginx (PPA), PHP7-FPM (PPA), MySQL 5.7 (PPA) or PostgreSQL, Redis, Elixir, Node JS and Phantom JS.
 - Revise virtual host Ruby script: https://gist.github.com/ziadoz/63efdb096123ec88271f
 - Use Docker containers when on a supported machine. Look at Ansible Containers.
+- Install XDebug and allow it to be toggled on and off.
 
 ## Commands
 ```

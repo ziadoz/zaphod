@@ -1,14 +1,6 @@
 FROM php:7.1-fpm
 RUN set -x \
     && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libmagickwand-dev \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/lib/apt/lists/*
-RUN set -x \
-    && apt-get update \
     && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \

@@ -1,5 +1,5 @@
 # Arthur
-A virtual environment for web development built with Docker.
+A web development environment built with Docker.
 
 ## Todos
 - Install Nginx (PPA), PHP7-FPM (PPA), MySQL 5.7 (PPA) or PostgreSQL, Redis, Elixir, Node JS and Phantom JS.

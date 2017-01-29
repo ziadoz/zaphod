@@ -5,7 +5,7 @@ services:
     image: nginx:latest
     hostname: arthur.dev
     volumes:
-      - ./images/nginx/conf/arthur.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/conf/arthur.conf:/etc/nginx/conf.d/default.conf
       - ./web:/web
     ports:
       - "80:80"
@@ -15,11 +15,11 @@ services:
       - arthur-network
 
   php:
-    build: ./images/php
+    build: ./docker/php
     env_file:
       - ./env/defaults.env
     volumes:
-      - ./images/php/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./docker/php/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./web:/web
     restart: always
     networks:
@@ -32,7 +32,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./images/mysql/conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/mysql/conf/my.cnf:/etc/mysql/conf.d/my.cnf
       - /var/lib/mysql
     restart: always
     networks:

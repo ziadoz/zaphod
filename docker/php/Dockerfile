@@ -23,8 +23,9 @@ RUN set -x \
         pdo \
         pdo_mysql \
         zip \
+    && pecl install xdebug \
+    && rm -rf /tmp/pear \
+    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && apt-get clean \
     && apt-get purge \
     && rm -rf /tmp/* /var/lib/apt/lists/*
-RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/bin/ --filename=composer

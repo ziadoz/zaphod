@@ -20,6 +20,7 @@ services:
       - ./env/defaults.env
     volumes:
       - ./docker/php/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./docker/php/conf/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./web:/web
     restart: always
     networks:

@@ -16,8 +16,6 @@ services:
 
   php:
     build: ./docker/php
-    env_file:
-      - ./env/defaults.env
     volumes:
       - ./docker/php/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./docker/php/conf/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
@@ -28,8 +26,6 @@ services:
 
   database:
     image: mysql:5.7
-    env_file:
-      - ./env/defaults.env
     ports:
       - "3306:3306"
     volumes:

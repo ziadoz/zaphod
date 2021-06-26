@@ -65,13 +65,13 @@ RUN echo "Upgrading" \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
 
-    && echo "Configuring PHP" \
-    && cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
-
     && echo "Cleaning Up" \
     && apt-get clean \
     && apt-get purge \
     && rm -rf /var/lib/apt/lists/*
+
+# Configure PHP
+RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 # Install Composer
 # @see https://github.com/docker-library/docs/tree/master/composer#php-version--extensions
@@ -102,5 +102,5 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -yqq nodejs \
     && npm install --global yarn
 
-# Copy Configuration
+# Configure XDebug
 COPY xdebug.ini "$PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini"

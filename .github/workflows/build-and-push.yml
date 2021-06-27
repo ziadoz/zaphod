@@ -41,6 +41,6 @@ jobs:
           context: ./docker/${{ matrix.image }}
           push: true
           tags: |
-            ${{ github.repository }}/${{ matrix.image }}:${{ github.sha }}
-            ${{ github.repository }}/${{ matrix.image }}:latest
+            ziadoz/${{ github.repository }}/${{ matrix.image }}:${{ github.sha }}
+            ziadoz/${{ github.repository }}/${{ matrix.image }}:latest
           platforms: linux/amd64,linux/arm64

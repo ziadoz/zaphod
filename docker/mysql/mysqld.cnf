@@ -1,0 +1,8 @@
+[mysqld]
+skip-character-set-client-handshake
+slow_query_log = ON
+long_query_time = 2
+default-time-zone = +00:00
+local-infile = 1
+max_allowed_packet = 200M
+tls_version = TLSv1.2

@@ -1,5 +1,5 @@
 # Zaphod
-A web development environment skeleton with Docker.
+A web development environment skeleton built with Docker.
 
 # Containers
 - PHP 8.x.x (Latest)

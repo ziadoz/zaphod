@@ -1,1 +1,1 @@
-# Create databases and user accounts here.
+-- Create databases and user accounts here.

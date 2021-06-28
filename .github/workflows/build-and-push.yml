@@ -1,12 +1,11 @@
 name: "Build and Push"
 
 on:
-  pull_request:
-#  push:
-#    branches:
-#      - master
-#    paths:
-#      - 'docker/**'
+  push:
+    branches:
+      - master
+    paths:
+      - 'docker/**'
 
 jobs:
   build-and-push:

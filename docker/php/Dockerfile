@@ -4,68 +4,20 @@ FROM php:8-fpm
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install PHP extensions
-RUN echo "Upgrading" \
-    && apt-get update \
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN apt-get update \
     && apt-get upgrade -yqq \
-
-    && echo "Installing cURL" \
-    && apt-get install -yqq libssl-dev libcurl4-openssl-dev curl \
-    && docker-php-ext-install curl \
-
-    && echo "Installing GD" \
-    && apt-get install -yqq libjpeg-dev libpng-dev libfreetype6-dev libwebp-dev libxpm-dev \
-    && docker-php-ext-configure gd \
-        --prefix=/usr --with-jpeg \
-        --with-webp \
-        --with-xpm \
-        --with-freetype \
-    && docker-php-ext-install gd \
-
-    && echo "Installing Imagick" \
-    && apt-get install -yqq git libmagickwand-dev imagemagick \
-    && cd /tmp \
-    && git clone https://github.com/Imagick/imagick \
-    && cd imagick \
-    && phpize \
-    && ./configure \
-    && make \
-    && make install \
-    && rm -r /tmp/imagick \
-    && docker-php-ext-enable imagick \
-
-    && echo "Installing IMAP" \
-    && apt-get install -yqq libc-client-dev libkrb5-dev \
-    && docker-php-ext-configure imap \
-        --with-kerberos \
-        --with-imap-ssl \
-    && docker-php-ext-install imap \
-
-    && echo "Installing INTL" \
-    && apt-get install -yqq zlib1g-dev libicu-dev g++ \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install intl \
-
-    && echo "Installing MBString" \
-    && apt-get install -yqq libonig-dev \
-    && docker-php-ext-install mbstring \
-
-    && echo "Installing Zip" \
-    && apt-get install -yqq libz-dev libzip-dev zip unzip \
-    && docker-php-ext-install zip \
-
-    && echo "Installing BCMath, Exif, JSON, Opcache, PCNTL, PDO MySQL" \
-    && docker-php-ext-install \
+    && install-php-extensions \
         bcmath \
+        curl \
         exif \
+        gd \
+        imap \
+        intl \
+        mbstring \
         pcntl \
         pdo_mysql \
-
-    && echo "Installing XDebug" \
-    && pecl channel-update pecl.php.net \
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug \
-
-    && echo "Cleaning Up" \
+        zip \
     && apt-get clean \
     && apt-get purge \
     && rm -rf /var/lib/apt/lists/*

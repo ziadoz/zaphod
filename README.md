@@ -9,4 +9,4 @@ A web development environment skeleton with Docker.
 - MailHog (Latest)
 
 # Installation
-Copy the `docker-compose.yml` file to the root of your project.
+Copy the `docker` directory and the `docker-compose.yml` file to the root of your project.

@@ -8,3 +8,5 @@ A web development environment skeleton with Docker.
 - Google Chrome (Latest)
 - MailHog (Latest)
 
+# Installation
+Copy the `docker-compose.yml` file to the root of your project.

@@ -69,6 +69,7 @@ services:
 
   chrome:
     image: ziadoz/zaphod-chrome:latest
+    hostname: chrome # Ensure ChromeDriver can be reached by other containers.
     depends_on:
       - php
       - nginx
